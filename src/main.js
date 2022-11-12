@@ -2,7 +2,7 @@ console.log('HELLO WORLD');
 
 
 const API_URL = 'https://icanhazdadjoke.com';
-
+const HTMLResponse = document.querySelector('#textJokes');
 
 const renderJokes = async() => {
     try {
@@ -18,6 +18,7 @@ const renderJokes = async() => {
         //get data from server
         const data = await respuesta.json();
         console.log(data.joke);
+        HTMLResponse.innerHTML = `${data.joke}`;
 
     } catch (error) {
         console.log(error);
@@ -30,7 +31,7 @@ const renderJokes = async() => {
 
 
 /*
-const HTMLResponse = document.querySelector('#textJokes');
+
 
 fetch(`${API_URL}/search`, {
         method: 'GET', // data can be `string` or {object}!
