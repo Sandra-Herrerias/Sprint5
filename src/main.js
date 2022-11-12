@@ -1,15 +1,13 @@
 console.log('HELLO WORLD');
 
 
-const API_URL = 'https://icanhazdadjoke.com/search';
+const API_URL = 'https://icanhazdadjoke.com';
 
 
-const cargarPeliculas = async() => {
-
-
+const renderJokes = async() => {
     try {
         //get response from server
-        const respuesta = await fetch(API_URL, {
+        const respuesta = await fetch(`${API_URL}/search`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
@@ -27,7 +25,7 @@ const cargarPeliculas = async() => {
 
 }
 
-cargarPeliculas();
+//renderJokes();
 
 
 
