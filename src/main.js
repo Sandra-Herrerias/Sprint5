@@ -7,7 +7,7 @@ const API_URL = 'https://icanhazdadjoke.com';
 const renderJokes = async() => {
     try {
         //get response from server
-        const respuesta = await fetch(`${API_URL}/search`, {
+        const respuesta = await fetch(`${API_URL}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
@@ -17,7 +17,7 @@ const renderJokes = async() => {
 
         //get data from server
         const data = await respuesta.json();
-        console.log(data);
+        console.log(data.joke);
 
     } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ const renderJokes = async() => {
 
 }
 
-//renderJokes();
+
 
 
 
