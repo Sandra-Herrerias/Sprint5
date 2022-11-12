@@ -1,57 +1,51 @@
 console.log('HELLO WORLD');
 
 
-const jokeEndPoint = 'https://icanhazdadjoke.com/search';
-/*
-function checkStatus(res) {
-    if (!res.ok) Promise.reject(new Error(res.statusText));
-    return Promise.resolve(res.json());
-}
+const API_URL = 'https://icanhazdadjoke.com/search';
 
 
-const renderText = (words) => {
-    const wrapper = document.getElementById('textJokes');
-    let text = '';
-    words.forEach(word => text += `${word} `);
-    wrapper.append(text);
-}
+const cargarPeliculas = async() => {
 
-async function renderJoke() {
+
     try {
-        const jokeApiRes = await fetch(jokeEndPoint);
-        const jokeApiData = await checkStatus(jokeApiRes);
-        // Waits for all the above promises to settle, then runs the rest 
+        //get response from server
+        const respuesta = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        console.log(respuesta);
 
-        renderText(jokeApiData);
+        //get data from server
+        const data = await respuesta.json();
+        console.log(data);
 
     } catch (error) {
-        console.log('Error:', error)
+        console.log(error);
     }
+
 }
 
-renderJoke();*/
-
-async function getResponse() {
-    const response = await fetch(
-            jokeEndPoint, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'text/html',
-                    'Accept': 'application/json',
-                    'Accept': 'text/plain'
-                }
-            }
-        ).then((response) => response.json())
-        .then((messages) => { console.log("messages"); });;
+cargarPeliculas();
 
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
 
-    console.log(data);
-    //return JSON.parse(data);
-}
+/*
+const HTMLResponse = document.querySelector('#textJokes');
 
-getResponse();
+fetch(`${API_URL}/search`, {
+        method: 'GET', // data can be `string` or {object}!
+        headers: {
+            'Accept': 'application/json',
+            'Accept': 'text/plain',
+            'Accept': 'text/html'
+        }
+    })
+    .then((response) => response.json())
+    .then((jokes) => {
+        const data = jokes.map((joke) => `<li>${joke.joke}</li>`);
+        HTMLResponse.innerHTML = `<ul>${data}</ul>`;
+    })
+    .then(result => console.log('success:', result))
+    .catch(error => console.log('error:', error));*/
