@@ -15,18 +15,18 @@
 
 <body>
     <div class="top-0 start-0">
-        <p>Avui: parcialment ennuvolat</p>
+        <p id="weather"></p>
     </div>
     <div class="wrapDiv d-flex align-items-center justify-content-center">
         <div class="jokeDiv text-center">
             <h2>Preparada per riure?&#128514;</h2>
             <p id="textJokes" class="m-5"></p>
             <div id="buttonsScore" class="mb-5">
-                <button id="btn" class="btn btn-danger" value="1"></button>
-                <button id="btn" class="btn btn-danger" value="2"></button>
-                <button id="btn" class="btn btn-danger" value="3"></button>
+                <button id="btn1" class="btn btn-danger" value="1" onclick="scoreJoke(this.value)"></button>
+                <button id="btn2" class="btn btn-danger" value="2" onclick="scoreJoke(this.value)"></button>
+                <button id="btn3" class="btn btn-danger" value="3" onclick="scoreJoke(this.value)"></button>
             </div>
-            <button id="nextJokebtn" onclick="renderJokes()" class="btn btn-primary">Següent acudit</button>
+            <button id="nextJokebtn" onclick="randomJoke()" class="btn btn-primary">Següent acudit</button>
         </div>
     </div>
 
