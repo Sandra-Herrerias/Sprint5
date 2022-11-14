@@ -1,13 +1,12 @@
 .jokeDiv {
-    width: 50%;
-    border: 3px solid green;
+    width: 40%;
     padding: 10px;
    z-index: 1;
 }
 
 .background-layer{
     position: absolute;
-    width: 50%;
+    width: 80%;
 }
 
 .top-right, .bottom-left{
@@ -16,7 +15,6 @@
 
 .wrapDiv {
     width: 100%;
-    border: 3px solid red;
     padding: 10px;
     position: fixed;
     top: 50%;
