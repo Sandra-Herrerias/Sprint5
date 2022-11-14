@@ -1,3 +1,13 @@
+#weather {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.weatherFont {
+    font-size: 2rem;
+}
+
 .jokeDiv {
     width: 45%;
     padding: 10px;
