@@ -1,43 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acudits</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="top-0 start-0">
-        <p id="weather"></p>
+      <p id="weather"></p>
     </div>
     <div class="wrapDiv d-flex align-items-center justify-content-center">
-        <div class="jokeDiv text-center">
-            <h2>Preparada per riure?&#128514;</h2>
-            <p id="textJokes" class="m-5"></p>
-            <div id="buttonsScore" class="mb-5">
-                <button id="btn1" class="btn btn-danger" value="1" onclick="scoreJoke(this.value)"></button>
-                <button id="btn2" class="btn btn-danger" value="2" onclick="scoreJoke(this.value)"></button>
-                <button id="btn3" class="btn btn-danger" value="3" onclick="scoreJoke(this.value)"></button>
-            </div>
-            <button id="nextJokebtn" onclick="randomJoke()" class="btn btn-primary">Següent acudit</button>
+      <div class="jokeDiv text-center">
+        <h2>Preparada per riure?&#128514;</h2>
+        <p id="textJokes" class="m-5"></p>
+        <div id="buttonsScore" class="mb-5">
+          <button
+            id="btn1"
+            class="btn btn-danger"
+            value="1"
+            onclick="scoreJoke(this.value)"
+          ></button>
+          <button
+            id="btn2"
+            class="btn btn-danger"
+            value="2"
+            onclick="scoreJoke(this.value)"
+          ></button>
+          <button
+            id="btn3"
+            class="btn btn-danger"
+            value="3"
+            onclick="scoreJoke(this.value)"
+          ></button>
         </div>
-        
-        <div class="background-layer">
+        <button id="nextJokebtn" onclick="randomJoke()" class="btn btn-primary">
+          Següent acudit
+        </button>
+        <div class="top-right position-absolute top-0 star
+        t-100 translate-middle">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#FF0066" d="M46.1,-74.5C57,-64.8,61.2,-47.3,65.6,-31.7C70,-16.1,74.7,-2.3,75.8,13C76.8,28.3,74.1,45.1,64.5,55.5C54.9,65.9,38.3,69.9,21.7,75.4C5.2,80.8,-11.3,87.8,-26.7,85.7C-42.1,83.5,-56.4,72.4,-66.9,58.8C-77.4,45.2,-84.1,29.1,-82.1,14.4C-80.2,-0.3,-69.5,-13.6,-61.3,-26.5C-53,-39.4,-47.2,-51.9,-37.4,-62.1C-27.6,-72.3,-13.8,-80.2,1.9,-83.2C17.6,-86.2,35.3,-84.3,46.1,-74.5Z" transform="translate(100 100)" />
+                <path fill="#FF0066" d="M43.3,-67.1C56.2,-67.6,66.6,-56.1,68,-42.9C69.3,-29.7,61.6,-14.8,58.4,-1.8C55.2,11.2,56.6,22.3,53.6,32.7C50.6,43.1,43.3,52.6,33.6,59.1C23.9,65.5,12,68.8,2,65.4C-8,62,-16.1,51.9,-24.2,44.5C-32.3,37.2,-40.4,32.6,-47,25.7C-53.6,18.7,-58.6,9.4,-60.7,-1.2C-62.7,-11.7,-61.9,-23.5,-56.6,-32.7C-51.3,-41.8,-41.5,-48.4,-31.3,-49.4C-21.2,-50.4,-10.6,-45.9,2.3,-49.9C15.2,-54,30.5,-66.6,43.3,-67.1Z" transform="translate(100 100)" />
               </svg>
-         </div>
+              <h1>TOP</h1>
+          </div>
+    
+          <div class="bottom-left position-absolute top-100 start-0 translate-middle">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FF0066" d="M7.6,-7.2C10.3,5.9,13.3,14.2,7,21.6C0.8,28.9,-14.8,35.4,-32.6,26.8C-50.3,18.1,-70.2,-5.6,-65.2,-21.9C-60.1,-38.3,-30,-47.3,-13.8,-42.8C2.4,-38.4,4.9,-20.4,7.6,-7.2Z" transform="translate(100 100)" />
+              </svg>
+              <h1>BOTTOM</h1>
+          </div>
+      </div>
+
+      <div class="background-layer">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill="#FF0066"
+            d="M46.1,-74.5C57,-64.8,61.2,-47.3,65.6,-31.7C70,-16.1,74.7,-2.3,75.8,13C76.8,28.3,74.1,45.1,64.5,55.5C54.9,65.9,38.3,69.9,21.7,75.4C5.2,80.8,-11.3,87.8,-26.7,85.7C-42.1,83.5,-56.4,72.4,-66.9,58.8C-77.4,45.2,-84.1,29.1,-82.1,14.4C-80.2,-0.3,-69.5,-13.6,-61.3,-26.5C-53,-39.4,-47.2,-51.9,-37.4,-62.1C-27.6,-72.3,-13.8,-80.2,1.9,-83.2C17.6,-86.2,35.3,-84.3,46.1,-74.5Z"
+            transform="translate(100 100)"
+          />
+        </svg>
+      </div>
+
+     
     </div>
 
-
     <script src="main.js"></script>
-</body>
-
+  </body>
 </html>
