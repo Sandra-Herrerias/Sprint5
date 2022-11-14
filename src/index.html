@@ -22,11 +22,11 @@
             <p id="enunciat" class="fw-bold">Preparada per riure?&#128514;</p>
             <p id="textJokes" class="m-5"></p>
             <div id="buttonsScore" class="mb-5">
-                <button id="btn1" class="btn" value="1" onclick="scoreJoke(this.value)">&#128531; </button>
-                <button id="btn2" class="btn" value="2" onclick="scoreJoke(this.value)">&#128529;</button>
-                <button id="btn3" class="btn" value="3" onclick="scoreJoke(this.value)">&#128518;</button>
+                <button id="btn1" class="btn" value="1" (click)="scoreJoke(this.value)">&#128531; </button>
+                <button id="btn2" class="btn" value="2" (click)="scoreJoke(this.value)">&#128529;</button>
+                <button id="btn3" class="btn" value="3" (click)="scoreJoke(this.value)">&#128518;</button>
             </div>
-            <button id="nextJokebtn" onclick="randomJoke()" class="btn fw-bold">Següent acudit</button>
+            <button id="nextJokebtn" (click)="randomJoke()" class="btn fw-bold">Següent acudit</button>
         </div>
 
         <div class="top-right position-absolute top-0 end-0">
@@ -50,8 +50,10 @@
 
 
     </div>
-
-    <script src="main.js"></script>
+    <script>
+        var exports = {};
+    </script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
