@@ -11,7 +11,6 @@ var Main = /** @class */ (function () {
         this.API_URL = 'https://icanhazdadjoke.com';
         this.API_URL_CHUCKNORRIS = 'https://api.chucknorris.io/jokes/random';
         this.HTMLResponse = document.getElementById('#textJokes');
-        this.reportAcudits = [];
         this.renderJokes = function () {
             fetch("".concat(_this.API_URL), {
                 method: 'GET',
@@ -47,14 +46,18 @@ var Main = /** @class */ (function () {
     };
     /*afegir la broma amb la puntuació i la data a un array, si ja existeix la broma en l'array, actualitzar l'objecte*/
     Main.prototype.scoreJoke = function (score) {
-        var _this = this;
         var d = new Date();
         var textDate = d.toISOString();
         //buscar a l'array d'acudits si existeix en alguna posició de l'array el que estic puntuant i obtenir la seva posició
         //si ja existeix en l'array, actualitzar el contingut de la posició on es troba
         //si no existeix, afegir un nou objecte a l'array
-        var scoreObj = { joke: this.currentJoke, score: score, date: textDate };
-        var posJoke = this.reportAcudits.findIndex(function (obj) { return obj.joke == _this.currentJoke; });
+        var scoreObj = {
+            joke: this.currentJoke,
+            score: score,
+            date: textDate
+        };
+        var posJoke = this.reportAcudits.map(function (x) { return x.joke; }).indexOf(this.currentJoke);
+        //let objectFound = this.reportAcudits[posJoke];
         console.log(scoreObj.score);
         if (posJoke == -1) {
             this.reportAcudits.push(scoreObj);
