@@ -14,17 +14,15 @@ export class Main {
     API_URL = 'https://icanhazdadjoke.com';
     API_URL_CHUCKNORRIS = 'https://api.chucknorris.io/jokes/random';
     HTMLResponse = document.getElementById('#textJokes');
-
-    reportAcudits: Score[] = [];
+   
+    reportAcudits!: Score[];
     score!: number;
     currentJoke!: string;
     randomNum!: number;
-
+  
     constructor() {
 
     }
-
-    
 
     randomJoke() {
         //create random number from 0 to 1
@@ -73,8 +71,14 @@ scoreJoke(score:number){
     //buscar a l'array d'acudits si existeix en alguna posició de l'array el que estic puntuant i obtenir la seva posició
     //si ja existeix en l'array, actualitzar el contingut de la posició on es troba
     //si no existeix, afegir un nou objecte a l'array
-    let scoreObj = { joke: this.currentJoke, score: score, date: textDate};
-    let posJoke = this.reportAcudits.findIndex((obj:Score) =>{return obj.joke == this.currentJoke});
+    let scoreObj: Score ={
+        joke: this.currentJoke, 
+        score: score, 
+        date: textDate
+    };
+
+    let posJoke = this.reportAcudits.map(function(x) {return x.joke; }).indexOf(this.currentJoke);
+    //let objectFound = this.reportAcudits[posJoke];
    
     console.log(scoreObj.score);
     if (posJoke == -1) {
