@@ -70,13 +70,13 @@
 
 @media (max-width: 576px) {
     .jokeDiv {
-        width: 60%;
+        width: 100%;
         -webkit-transform: scale(0.67);
         -moz-transform: scale(0.67);
         transform: scale(0.67);
     }
     .background-layer {
-        width: 250%;
+        width: 100% !important;
     }
     .top-right,
     .bottom-left {
@@ -86,19 +86,26 @@
 
 @media (min-width: 576px) {
     .jokeDiv {
-        width: 60%;
+        width: 75%;
         -webkit-transform: scale(0.80);
         -moz-transform: scale(0.80);
         transform: scale(0.80);
+        font-size: 0.75rem;
     }
     .background-layer {
-        width: 85%;
+        width: 70%;
     }
 }
 
 @media (min-width: 768px) {
     .jokeDiv {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .background-layer {
+        width: 90%;
     }
 }
 
@@ -110,7 +117,7 @@
         transform: scale(0.80);
     }
     .background-layer {
-        width: 63%;
+        width: 62%;
     }
 }
 
