@@ -24,7 +24,10 @@ export class Main {
 
     }
 
+
     randomJoke() {
+
+        console.log("ENTRA");
         //create random number from 0 to 1
         this.randomNum = Math.floor(Math.random() * 2);
 
@@ -89,7 +92,7 @@ scoreJoke(score:number){
     console.log(this.reportAcudits);
 }
 
-getPosition(){
+ getPosition(){
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
         let long = position.coords.longitude;

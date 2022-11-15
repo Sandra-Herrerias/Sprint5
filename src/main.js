@@ -35,6 +35,7 @@ var Main = /** @class */ (function () {
         };
     }
     Main.prototype.randomJoke = function () {
+        console.log("ENTRA");
         //create random number from 0 to 1
         this.randomNum = Math.floor(Math.random() * 2);
         if (this.randomNum == 0) {
