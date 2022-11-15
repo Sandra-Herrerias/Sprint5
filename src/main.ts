@@ -1,122 +1,118 @@
+export {};
+window.onload = () => {
+    getPosition();
+};
+
 interface Score {
     joke?: string;
     score?: number;
     date?: string;
 }
 
-window.onload = () => {
-    let main = new Main();
-    main.getPosition();
-};
+const API_URL = 'https://icanhazdadjoke.com';
+const API_URL_CHUCKNORRIS = 'https://api.chucknorris.io/jokes/random';
+const HTMLResponse: HTMLElement | null = document.querySelector('#textJokes');
+const btnsScore: HTMLElement | null = document.querySelector('#buttonsScore');
 
-export class Main {
+let reportAcudits: Score[] = [];
+let score!: number;
+let currentJoke!: string;
+let randomNum!: number;
 
-    API_URL = 'https://icanhazdadjoke.com';
-    API_URL_CHUCKNORRIS = 'https://api.chucknorris.io/jokes/random';
-    HTMLResponse = document.getElementById('#textJokes');
-   
-    reportAcudits!: Score[];
-    score!: number;
-    currentJoke!: string;
-    randomNum!: number;
-  
-    constructor() {
+function randomJoke() {
+    //create random number from 0 to 1
+    randomNum = Math.floor(Math.random() * 2);
 
+    if (randomNum == 0) {
+        renderJokes();
+    } else if (randomNum == 1) {
+        renderJokesChuck();
     }
+}
 
 
-    randomJoke() {
+const renderJokes = (): void => {
 
-        console.log("ENTRA");
-        //create random number from 0 to 1
-        this.randomNum = Math.floor(Math.random() * 2);
-
-        if (this.randomNum == 0) {
-            this.renderJokes();
-        } else if (this.randomNum == 1) {
-            this.renderJokesChuck();
-        }
-    }
-
-
-    renderJokes = (): void => {
-        fetch(`${this.API_URL}`, {
-            method: 'GET',
-            headers: {
-                "Accept": "application/json",
-            },
-        })
-            .then(response => response.json())
-            .then((text: string) => this.HTMLResponse!.innerHTML = this.currentJoke)
-            .catch(error => console.log(error));
-        (document.querySelector('buttonsScore') as HTMLInputElement).style.display = 'block';
-    }
+    fetch(`${API_URL}`, {
+        method: 'GET',
+        headers: {
+            "Accept": "application/json",
+        },
+    }).then(response => response.json())
+        .then((data) => {
+            currentJoke = data.joke;
+            HTMLResponse!.innerHTML = currentJoke; 
+            btnsScore!.style.display = 'block';
+        }).catch(error => console.log(error));
+}
 
 
-    renderJokesChuck = (): void => {
-        fetch(`${this.API_URL_CHUCKNORRIS}`, {
-            method: 'GET',
-            headers: {
-                "Accept": "application/json",
-            },
-        })
-            .then(response => response.json())
-            .then((text: string) => this.HTMLResponse!.innerHTML = this.currentJoke)
-            .catch(error => console.log(error));
-        (document.querySelector('buttonsScore') as HTMLInputElement).style.display = 'block';
-    }
+const renderJokesChuck = (): void => {
+
+    fetch(`${API_URL_CHUCKNORRIS}`, {
+        method: 'GET',
+        headers: {
+            "Accept": "application/json",
+        },
+    }).then(response => response.json())
+        .then((data) => {
+            currentJoke = data.value;
+            HTMLResponse!.innerHTML = currentJoke;
+            btnsScore!.style.display = 'block';
+        }).catch(error => console.log(error));   
+}
 
 
 /*afegir la broma amb la puntuació i la data a un array, si ja existeix la broma en l'array, actualitzar l'objecte*/
-scoreJoke(score:number){
+function scoreJoke(score: any) {
     let d = new Date();
     let textDate = d.toISOString();
     //buscar a l'array d'acudits si existeix en alguna posició de l'array el que estic puntuant i obtenir la seva posició
     //si ja existeix en l'array, actualitzar el contingut de la posició on es troba
     //si no existeix, afegir un nou objecte a l'array
-    let scoreObj: Score ={
-        joke: this.currentJoke, 
-        score: score, 
+    let scoreObj: Score = {
+        joke: currentJoke,
+        score: score,
         date: textDate
     };
 
-    let posJoke = this.reportAcudits.map(function(x) {return x.joke; }).indexOf(this.currentJoke);
+    let posJoke = reportAcudits.map(function (x) { return x.joke; }).indexOf(currentJoke);
     //let objectFound = this.reportAcudits[posJoke];
-   
+
     console.log(scoreObj.score);
     if (posJoke == -1) {
-        this.reportAcudits.push(scoreObj);
+        reportAcudits.push(scoreObj);
     } else {
-        this.reportAcudits[posJoke] = scoreObj;
+        reportAcudits[posJoke] = scoreObj;
     }
-    console.log(this.reportAcudits);
+    console.log(reportAcudits);
 }
 
- getPosition(){
+function getPosition() {
     if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-        let long = position.coords.longitude;
-        let lat = position.coords.latitude;
-        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m&current_weather=true`, {
-            method: "GET"
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                let weatherDesc = this.convertCodeToWeatherDescription(data.current_weather.weathercode);
-                
-                let myContainer = <HTMLElement> document.querySelector("#weather");
-                myContainer.innerHTML += weatherDesc;
-                myContainer.innerHTML += '<span class="px-2">&#124;</span>';
-                myContainer.innerHTML +=  data.current_weather.temperature + '°C';
-            });
-    });
-} else {
-    alert("Geolocation is not supported by this browser.");
-}
+        navigator.geolocation.getCurrentPosition((position) => {
+            let long = position.coords.longitude;
+            let lat = position.coords.latitude;
+            fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m&current_weather=true`, {
+                method: "GET"
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    let weatherDesc = convertCodeToWeatherDescription(data.current_weather.weathercode);
+
+                    let myContainer = <HTMLElement>document.querySelector("#weather");
+                    myContainer.innerHTML += weatherDesc;
+                    myContainer.innerHTML += '<span class="px-2">&#124;</span>';
+                    myContainer.innerHTML += data.current_weather.temperature + '°C';
+                });
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
 }
 
 
-convertCodeToWeatherDescription(weatherCode: number) {
+function convertCodeToWeatherDescription(weatherCode: number) {
     var weather;
     switch (weatherCode) {
         case 0:
@@ -189,5 +185,4 @@ convertCodeToWeatherDescription(weatherCode: number) {
     }
 
     return weather;
-}
 }
