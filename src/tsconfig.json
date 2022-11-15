@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": [ "esnext", "ES2016","dom","ES2015" ],
+    "target": "es5",
+    "lib": [ "es6", "dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true, // HERE
-    "module": "esnext",
+    "module": "es6",
     "moduleResolution": "node",
     "isolatedModules": true,
     "noEmit": true,
